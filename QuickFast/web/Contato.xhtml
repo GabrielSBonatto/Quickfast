@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Agenda de Contato</title>
+        <link rel="stylesheet" href="css/responsive.css"></link>
+     
+    </h:head>
+    <h:body>
+        <div  class="container">
+        
+        <h:form>
+            <h:panelGrid columns="1">
+                <p:outputLabel value ="Nome"></p:outputLabel>
+                <p:inputText value ="#{contatoBean.contMode.nome}" size="50"></p:inputText>
+                
+                 <p:outputLabel value ="Celular"></p:outputLabel>
+                <p:inputText value ="#{contatoBean.contMode.celular}" size="20"></p:inputText>
+                
+                <p:outputLabel value ="Telefone"></p:outputLabel>
+                <p:inputText value ="#{contatoBean.contMode.telefone}" size="20"></p:inputText>
+                
+                <p:outputLabel value ="Email"></p:outputLabel>
+                <p:inputText value ="#{contatoBean.contMode.email}" size="50"></p:inputText>
+                
+                <p:inputText type="file" ></p:inputText>
+            </h:panelGrid>
+            <br/>
+            <p:commandButton value="Salvar contato" action="#{contatoBean.salvarDados()}" update="@form"></p:commandButton>
+           
+            <br/><br/>
+            
+    
+            
+            <p:dataTable var="con" value="#{contatoBean.lista}" emptyMessage="Nenhum contato cadastrado">
+                <p:column headerText="Nome">
+                    <h:outputLabel value="#{con.nome}"></h:outputLabel>
+                </p:column>
+                
+                <p:column headerText="Celular">
+                    <h:outputLabel value="#{con.celular}"></h:outputLabel>
+                </p:column>
+                
+                <p:column headerText="Telefone">
+                    <h:outputLabel value="#{con.telefone}"></h:outputLabel>
+                </p:column>
+                
+                <p:column headerText="Email">
+                    <h:outputLabel value="#{con.email}"></h:outputLabel>
+                </p:column>
+                
+                 <p:column headerText="Altera">
+                     <p:commandButton value="Alterar" action="#{contatoBean.alterar(con)}" update="@form"></p:commandButton>
+                </p:column>
+                
+                <p:column headerText="Excluir">
+                    <p:commandButton value="Apagar" action="#{contatoBean.excluir(con)}" update="@form"></p:commandButton>
+                </p:column>
+                
+            </p:dataTable>
+            
+            
+        </h:form>
+            
+            </div>
+    </h:body>
+</html>
+
